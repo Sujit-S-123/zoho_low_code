@@ -1,0 +1,88 @@
+/*
+ * Author       : sujit.s.2024.cse_rajalaks896
+ * Generated on : 10-Nov-2026 22:59:02
+ * Version      : 1.0
+ */
+ application "Student Internship & Placement Tracker app"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 
+
+
+
+
+
+	share_settings
+	{
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		
+		font = "lato"
+		color options
+    	{
+        color = "11"
+    	}
+    	icon
+    	{
+        	text = "STU"
+        	background color = "theme"
+        	foreground color = "#ffffff"
+    	}
+    	logo
+    	{
+        	preference = "app_icon"
+        	placement = "left"
+    	}
+	}
+
+
+	phone
+	{
+		customize
+		{
+        	layout = twocolumn
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = chryslerpurple
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+        	layout = slidingpane
+        	font = "default"
+            style = "3"
+        	color options
+        	{
+             	color = blue
+         	}
+         	logo
+         	{
+             	preference = "none"
+         	}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

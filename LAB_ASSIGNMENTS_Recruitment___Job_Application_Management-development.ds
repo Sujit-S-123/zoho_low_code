@@ -1,0 +1,2843 @@
+/*
+ * Author       : sujit.s.2024.cse_rajalaks896
+ * Generated on : 10-Nov-2026 22:59:04
+ * Version      : 1.0
+ */
+ application "Recruitment & Job Application Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Employees
+		{
+			success message = "Employee Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Department
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Software Development","Engineering","Human Resources"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_Email
+			(
+    			type = email
+				displayname = "Employee Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Job_Application_Form
+		{
+			displayname = "Job Application Form"
+			success message = "Job Application Added Successfully"
+			Section_A_Personal_Details
+			(
+				type = section
+				displayname = "Section A - Personal Details"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Candidate_Name
+			(
+    			type = name
+				displayname = "Candidate Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Current_Address
+			(
+    			type = address
+				displayname = "Current Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Contact_Number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+    			defaultcountry="in"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Section_B_Contact_Online_Presence
+			(
+				type = section
+				displayname = "Section B - Contact & Online Presence"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Email_Address
+			(
+    			type = email
+				displayname = "Email Address"
+				maxchar = 80
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			LinkedIn_Profile
+			(
+    			type = text
+				displayname = "LinkedIn Profile"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section_C_Job_Experience_Details1
+			(
+				type = section
+				displayname = "Section C - Job & Experience Details"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			must have Department_Applied_For
+			(
+				type = picklist
+				displayname = "Department Applied For"
+				maxchar = 100
+				values = {"Software Development","Engineering","Quality Assurance","Human Resources","Marketing","Finance"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			must have Employment_Type_Preferred
+			(
+				type = radiobuttons
+				displayname = "Employment Type Preferred"
+				maxchar = 100
+				values = {"Full-Time","Part-Time","Internship"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Years_Of_Experience
+			(
+				type = number
+				displayname = "Years Of Experience"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Key_Skills
+			(
+				type = list	
+				displayname = "Key Skills"
+				values = {"Java","React","SQL","Communication","Python"}
+				height = 60px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Available_Joining_Date
+			(
+    			type = date
+				displayname = "Available Joining Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Section_D
+			(
+				type = section
+				displayname = "Section D - Interview Scheduling & Consent"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Preferred_Interview_Time
+			(
+    			type = time
+				displayname = "Preferred Interview Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Cover_Letter
+			(
+    			type = textarea
+				displayname = "Cover Letter"
+				height = 100px
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			must have Background_Verification_Consent
+			(
+				type = checkboxes	
+				displayname = "Background Verification Consent"
+				values = {"I consent to background verification if selected"}
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Section_E_Academic_Referral_Verification
+			(
+				type = section
+				displayname = "Section E - Academic & Referral Verification"
+				visibility = true
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			Referral_Employee_Lookup
+			(
+				type = picklist	
+				displayname = "Referral Employee Lookup"
+				values  = Employees.ID
+    			displayformat = [" " + Employee_Name.prefix + " " + Employee_Name.first_name + " " + Employee_Name.last_name + " " + Employee_Name.suffix]
+				sortorder = ascending
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Candidate_Photo
+			(
+    			type = image
+				displayname = "Candidate Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Resume_Upload
+			(
+    			type = upload file
+				displayname = "Resume Upload"
+				browse = local_drive
+				allowed file formats = {"pdf","docx"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Academic_CGPA
+			(
+				type = decimal
+				displayname = "Academic CGPA"
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Section_F_Employment_History_Media_Details
+			(
+				type = section
+				displayname = "Section F - Employment History & Media Details"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			Portfolio_GitHub_URL
+			(
+    			type = url
+				displayname = "Portfolio GitHub URL"
+				enable  linkname
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Video_Resume
+			(
+    			type = video
+				displayname = "Video Resume"
+    			duration=90
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Self_Introduction_Audio
+			(
+     			type = audio
+				displayname = "Self Introduction Audio"
+    			duration=60
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Previous_Employment_History
+			(
+				type = grid
+				displayname = "Previous Employment History"
+				maxrow = 6
+				Company_Name
+				(
+    				type = text
+					displayname = "Company Name"
+					width = medium
+				)
+				Designation
+				(
+    				type = text
+					width = medium
+				)
+				Duration_Years
+				(
+					type = decimal
+					displayname = "Duration (Years)"
+					width = medium
+				)
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Section_G_Compensation_Relocation
+			(
+				type = section
+				displayname = "Section G - Compensation & Relocation"
+				visibility = true
+	 			row = 8
+	 			column = 0   
+				width = medium
+			)
+			must have Willing_To_Relocate
+			(
+    			type = checkbox
+				displayname = "Willing To Relocate"
+				initial value = false
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Current_Annual_CTC
+			(
+				displayname = "Current Annual CTC"
+				type = INR
+				format = commadotindian
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Expected_Salary_Hike_Percent
+			(
+    			type = percentage
+				displayname = "Expected Salary Hike Percent"
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Expected_Annual_CTC
+			(
+				type = decimal
+				displayname = "Expected Annual CTC"
+	 			row = 8
+	 			column = 1   
+				width = medium
+    			Formula_Properties
+    			(
+    						value =  input.Current_Annual_CTC + input.Current_Annual_CTC * input.Expected_Salary_Hike_Percent / 100
+    						visibility = true
+    			)
+			)
+			Section_H_Declaration_System_Generated_Values
+			(
+				type = section
+				displayname = "Section H - Declaration & System-Generated Values"
+				visibility = true
+	 			row = 9
+	 			column = 0   
+				width = medium
+			)
+			Company_Culture_Display
+			(
+    			type = richtext
+				displayname = "Company Culture Display"
+				height = 200px
+				toolbar = enable
+				[
+					style, font-color, background-color, link, bullets-and-numbering, 
+					font-size : {1, 2, 3, 4, 5, 6, 7}
+				]
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			must have Candidate_Digital_Signature
+			(
+    			type = signature
+				displayname = "Candidate Digital Signature"
+	 			row = 9
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Application_Submitted_On
+			(
+    			type = datetime
+				displayname = "Application Submitted On"
+				initial value = "${zoho.currenttime}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			Application_ID
+			(
+    			type = autonumber
+				displayname = "Application ID"
+				start index = 1
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			Candidate_Tracking_QR_Code
+			(
+				type = qrcode
+				displayname = "Candidate Tracking QR Code"
+				value = "HR-APP-2026-${Application_ID}"
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			Section_I_HR_Processing_Internal
+			(
+				type = section
+				displayname = "Section I - HR Processing (Internal)"
+				visibility = true
+	 			row = 10
+	 			column = 0   
+				width = medium
+			)
+			Application_Status
+			(
+				type = picklist
+				displayname = "Application Status"
+				maxchar = 100
+				values = {"Applied","Screening","Interview","Ready for Offer","Offer","Hired","Rejected"}
+				initial value = "Applied"
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Screening_Status
+			(
+				type = picklist
+				displayname = "Screening Status"
+				maxchar = 100
+				values = {"Pending","Shortlisted","On Hold","Not Shortlisted"}
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Interview_Round
+			(
+				type = picklist
+				displayname = "Interview Round"
+				maxchar = 100
+				values = {"Round 1 - Technical","Round 2 - Managerial","Round 3 - HR"}
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Interviewer_Assigned
+			(
+    			type = text
+				displayname = "Interviewer Assigned"
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Scheduled_Interview_Date
+			(
+    			type = date
+				displayname = "Scheduled Interview Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Probation_Status
+			(
+				type = picklist
+				displayname = "Probation Status"
+				maxchar = 100
+				values = {"Not Applicable","In Progress","Completed"}
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Interview_Preparation_Notes
+			(
+    			type = textarea
+				displayname = "Interview Preparation Notes"
+				height = 100px
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Payout_Transaction_Reference
+			(
+    			type = text
+				displayname = "Payout Transaction Reference"
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Referral_Bonus_Status
+			(
+				type = picklist
+				displayname = "Referral Bonus Status"
+				maxchar = 100
+				values = {"Not Applicable","Pending","Paid","Failed"}
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Interview_Mode
+			(
+				type = radiobuttons
+				displayname = "Interview Mode"
+				maxchar = 100
+				values = {"In-person","Virtual"}
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Stage1","Stage2","Stage3","Screening","Offer","Hired","Rejected","Applied","Interview"}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Job_Applications
+		{
+			displayName = "All Job Applications"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Academic_CGPA as "Academic CGPA"
+				Resume_Upload as "Resume Upload"
+				Candidate_Photo as "Candidate Photo"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Previous_Employment_History.Company_Name as "Previous Employment History"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Willing_To_Relocate as "Willing To Relocate"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Interview_Mode as "Interview Mode"
+				Probation_Status as "Probation Status"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+			)
+		}
+		default list All_Employees
+		{
+			displayName = "All Employees"
+			show all rows from Employees    
+			(
+				Employee_Name  as "Employee Name"
+				Department
+				Employee_Email as "Employee Email"
+			)
+		}
+		list All_Applications_List
+		{
+			displayName = "All_Applications_List"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			filters
+			(
+				Department_Applied_For
+				Employment_Type_Preferred
+				Application_Status
+			)
+			sort by
+			(
+				Application_Submitted_On descending
+			)
+		}
+		spreadsheet Applications_Spreadsheet
+		{
+			displayName = "Applications_Spreadsheet"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			sort by
+			(
+				Department_Applied_For ascending
+			)
+		}
+		kanban Application_Status_Kanban
+		{
+			displayName = "Application_Status_Kanban"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			options
+			(
+	 			display field = Application_Status
+	 		)
+		}
+		calendar Interview_Schedule_Calendar
+		{
+			displayName = "Interview_Schedule_Calendar"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			options
+			(
+				display field = Candidate_Name
+				start date = Scheduled_Interview_Date
+			)
+		}
+		map Candidate_Location_Map
+		{
+			displayName = "Candidate_Location_Map"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			options
+			(
+	 			display field = Current_Address
+	 		)
+		}
+		timeline Application_Activity_Timeline
+		{
+			displayName = "Application_Activity_Timeline"
+			show all rows from Job_Application_Form    
+			(
+				Candidate_Name  as "Candidate Name"
+				Current_Address  as "Current Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				Email_Address as "Email Address"
+				LinkedIn_Profile as "LinkedIn Profile"
+				Department_Applied_For as "Department Applied For"
+				Employment_Type_Preferred as "Employment Type Preferred"
+				Years_Of_Experience as "Years Of Experience"
+				Key_Skills as "Key Skills"
+				Available_Joining_Date as "Available Joining Date"
+				Preferred_Interview_Time as "Preferred Interview Time"
+				Cover_Letter as "Cover Letter"
+				Background_Verification_Consent as "Background Verification Consent"
+				Referral_Employee_Lookup as "Referral Employee Lookup"
+				Candidate_Photo as "Candidate Photo"
+				Resume_Upload as "Resume Upload"
+				Academic_CGPA as "Academic CGPA"
+				Portfolio_GitHub_URL as "Portfolio GitHub URL"
+				Video_Resume as "Video Resume"
+				Self_Introduction_Audio as "Self Introduction Audio"
+				Willing_To_Relocate as "Willing To Relocate"
+				Current_Annual_CTC as "Current Annual CTC"
+				Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+				Expected_Annual_CTC as "Expected Annual CTC"
+				Company_Culture_Display as "Company Culture Display"
+				Candidate_Digital_Signature as "Candidate Digital Signature"
+				Application_Submitted_On as "Application Submitted On"
+				Application_ID as "Application ID"
+				Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+				Application_Status as "Application Status"
+				Screening_Status as "Screening Status"
+				Interview_Round as "Interview Round"
+				Interviewer_Assigned as "Interviewer Assigned"
+				Scheduled_Interview_Date as "Scheduled Interview Date"
+				Probation_Status as "Probation Status"
+				Interview_Preparation_Notes as "Interview Preparation Notes"
+				Payout_Transaction_Reference as "Payout Transaction Reference"
+				Referral_Bonus_Status as "Referral Bonus Status"
+				Interview_Mode as "Interview Mode"
+			)
+			options
+			(
+				display field = Candidate_Name
+				start date = Application_Submitted_On
+			)
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void Generate_Offer_Letter_Function(int recordId)
+                 {
+                 	// Reusable function: builds a personalised offer letter and emails it to the candidate
+                 	rec = Job_Application_Form[ID == recordId];
+                 	if(rec.count() == 0)
+                 	{
+                 		info "Offer letter not generated - record not found: " + recordId;
+                 		return;
+                 	}
+                 	if(rec.Candidate_Name == null || rec.Expected_Annual_CTC == null)
+                 	{
+                 		info "Offer letter not generated - Candidate Name or Expected Annual CTC missing for record " + recordId;
+                 		return;
+                 	}
+                 	candidateName = rec.Candidate_Name.first_name + " " + rec.Candidate_Name.last_name;
+                 	appRef = "HR-APP-2026-" + rec.Application_ID.toString().leftpad(6).replaceAll(" ","0");
+                 	joiningDate = ifnull(rec.Available_Joining_Date,"to be confirmed");
+                 	letter = "<h3>Offer of Employment</h3>Dear " + candidateName + ",<br><br>We are pleased to offer you a " + rec.Employment_Type_Preferred + " position in our <b>" + rec.Department_Applied_For + "</b> department.<br><br>";
+                 	letter = letter + "<b>Role / Department:</b> " + rec.Department_Applied_For + "<br><b>Annual CTC:</b> INR " + rec.Expected_Annual_CTC + "<br><b>Joining Date:</b> " + joiningDate + "<br><b>Application ID:</b> " + appRef + "<br><br>";
+                 	letter = letter + "Please confirm your acceptance by replying to this email.<br><br>Regards,<br>HR Recruitment Team";
+                 	sendmail
+                 	[
+                 		from :zoho.adminuserid
+                 		to :rec.Email_Address
+                 		subject :"Offer Letter - " + appRef
+                 		message :letter
+                 	]
+                 	rec.Application_Status="Offer";
+                 	info "Offer letter sent to " + rec.Email_Address;
+                 }
+			 }
+		 }
+
+
+		workflow
+		{
+		form
+		{
+			On_Application_Submit_Wor as "On_Application_Submit_Workflow"
+			{
+				type =  form
+				form = Job_Application_Form
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// On_Application_Submit_Workflow - acknowledgement to candidate + notify HR
+										candidateEmail = input.Email_Address;
+										appRef = "HR-APP-2026-" + input.Application_ID.toString().leftpad(6).replaceAll(" ","0");
+										candidateName = input.Candidate_Name.first_name + " " + input.Candidate_Name.last_name;
+										if(candidateEmail != null && candidateEmail.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"))
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :candidateEmail
+												subject :"Application Received - " + appRef
+												message :"Dear " + candidateName + ",<br><br>Thank you for applying to the " + input.Department_Applied_For + " department. Your Application ID is <b>" + appRef + "</b>.<br>Our HR team will screen your application within 5 working days and contact you regarding interview scheduling within 10 working days.<br><br>Regards,<br>HR Recruitment Team"
+											]
+										}
+										else
+										{
+											info "Acknowledgement not sent - invalid candidate email for record " + input.ID;
+										}
+										sendmail
+										[
+											from :zoho.adminuserid
+											to :zoho.adminuserid
+											subject :"New Job Application - " + appRef + " (" + input.Department_Applied_For + ")"
+											message :"A new application has been submitted.<br>Candidate: " + candidateName + "<br>Department: " + input.Department_Applied_For + "<br>Employment Type: " + input.Employment_Type_Preferred + "<br>Experience: " + input.Years_Of_Experience + " years<br>Please triage it in the Candidate Application Report."
+										]
+						)
+					}
+				}
+
+			}
+			Job_Application_Field_Val as "Job_Application_Field_Validations"
+			{
+				type =  form
+				form = Job_Application_Form
+
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Field-level validations for Job_Application_Form
+										if(input.Years_Of_Experience != null && input.Years_Of_Experience < 0 || input.Years_Of_Experience > 40)
+										{
+											alert "Years of Experience must be between 0 and 40.";
+											cancel submit;
+										}
+										if(input.Available_Joining_Date != null && input.Available_Joining_Date < zoho.currentdate)
+										{
+											alert "Available Joining Date cannot be a past date.";
+											cancel submit;
+										}
+										if(input.Background_Verification_Consent == null || input.Background_Verification_Consent.size() == 0)
+										{
+											alert "Please provide your consent to background verification to submit the application.";
+											cancel submit;
+										}
+										if(input.Expected_Salary_Hike_Percent != null && input.Expected_Salary_Hike_Percent < 0 || input.Expected_Salary_Hike_Percent > 100)
+										{
+											alert "Expected Salary Hike Percent must be between 0 and 100.";
+											cancel submit;
+										}
+										if(input.Current_Annual_CTC != null && input.Current_Annual_CTC < 0)
+										{
+											alert "Current Annual CTC cannot be negative.";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Job_Application_Form_Load as "Job_Application_Form_Load"
+			{
+				type =  form
+				form = Job_Application_Form
+
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Company culture reference block (read-only) and system-generated fields
+										input.Company_Culture_Display = "<p><b>Life at our company</b></p><p>We offer hybrid work, learning stipends, and a 5-day work week. Read more about our values below.</p><ul><li>Ownership and integrity</li><li>Continuous learning</li><li>Customer-first mindset</li></ul>";
+										disable Company_Culture_Display;
+										disable Application_Submitted_On;
+										if(input.Application_Submitted_On == null)
+										{
+											input.Application_Submitted_On = zoho.currenttime;
+										}
+										if(input.Application_Status == null)
+										{
+											input.Application_Status = "Applied";
+										}
+						)
+					}
+				}
+
+			}
+			Referral_Bonus_Payout_Wor as "Referral_Bonus_Payout_Workflow"
+			{
+				type =  form
+				form = Job_Application_Form
+
+				record event = on edit
+
+				on update of Probation_Status
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Referral bonus payout - fires when a hired, referred candidate's Probation_Status becomes 'Completed'
+										if(input.Probation_Status == "Completed" && input.Application_Status == "Hired" && input.Referral_Employee_Lookup != null && input.Referral_Bonus_Status != "Paid")
+										{
+											referrer = Employees[ID == input.Referral_Employee_Lookup];
+											payoutDone = false;
+											attempt = 0;
+											// Retry the payout status-check up to 3 times before flagging the transaction as failed
+											for each  r in {1,2,3}
+											{
+												if(!payoutDone)
+												{
+													attempt = r;
+													txnRef = "REF-BONUS-" + input.ID + "-" + zoho.currenttime.toString("yyyyMMddHHmmss");
+													// Payout is initiated through the payroll / payment connector configured in Zoho Creator
+													payoutDone = true;
+												}
+											}
+											if(payoutDone)
+											{
+												input.Referral_Bonus_Status = "Paid";
+												input.Payout_Transaction_Reference = txnRef;
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :zoho.adminuserid
+													subject :"Referral bonus paid - " + txnRef
+													message :"Referral bonus has been initiated for employee " + referrer.Employee_Name + " (" + ifnull(referrer.Department,"-") + ") for referring candidate record " + input.ID + ".<br>Transaction reference: " + txnRef
+												]
+											}
+											else
+											{
+												input.Referral_Bonus_Status = "Failed";
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :zoho.adminuserid
+													subject :"Referral bonus payout FAILED - payroll follow-up needed"
+													message :"Referral bonus payout failed after " + attempt + " attempts for candidate record " + input.ID + ". Please follow up with payroll."
+												]
+											}
+										}
+						)
+					}
+				}
+
+			}
+			OnEdit_Recalculate_CTC_Wo as "OnEdit_Recalculate_CTC_Workflow"
+			{
+				type =  form
+				form = Job_Application_Form
+
+				record event = on edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fires on edit of any record in Candidate_Application_Report (incl. inline edits in the report grid)
+										// Expected_Annual_CTC is a read-only Formula field: Zoho recalculates it automatically whenever
+										// Current_Annual_CTC or Expected_Salary_Hike_Percent change. This workflow verifies the value
+										// and alerts HR if the stored figure is inconsistent, preventing manual-override mismatches.
+										if(input.Current_Annual_CTC != null || input.Expected_Salary_Hike_Percent != null)
+										{
+											ctc = ifnull(input.Current_Annual_CTC,0);
+											hike = ifnull(input.Expected_Salary_Hike_Percent,0);
+											recalculated = ctc + ctc * hike / 100;
+											info "Expected Annual CTC recalculated: " + recalculated;
+											if(input.Expected_Annual_CTC != null && input.Expected_Annual_CTC.round(2) != recalculated.round(2))
+											{
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :zoho.adminuserid
+													subject :"CTC mismatch detected for record " + input.ID
+													message :"Stored Expected Annual CTC (" + input.Expected_Annual_CTC + ") does not match recalculated value (" + recalculated + ")."
+												]
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Daily_Interview_Reminder_ as "Daily_Interview_Reminder_Schedule"
+			{
+				type =  schedule
+				start = "2026-11-11 17:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						// Runs daily at 5:00 PM - reminds candidates whose interview is scheduled for tomorrow (one reminder per interview)
+										tomorrow = zoho.currentdate.addDay(1);
+										upcoming = Job_Application_Form[Scheduled_Interview_Date == tomorrow && Application_Status == "Interview"];
+										for each  cand in upcoming
+										{
+											candidateName = cand.Candidate_Name.first_name + " " + cand.Candidate_Name.last_name;
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :cand.Email_Address
+												subject :"Interview Reminder - " + tomorrow.toString("dd-MMM-yyyy")
+												message :"Dear " + candidateName + ",<br><br>This is a reminder of your interview tomorrow (" + tomorrow.toString("dd-MMM-yyyy") + ") at " + ifnull(cand.Preferred_Interview_Time,"the scheduled time") + ".<br><b>Round:</b> " + ifnull(cand.Interview_Round,"-") + "<br><b>Mode:</b> " + ifnull(cand.Interview_Mode,"-") + "<br><b>Interviewer:</b> " + ifnull(cand.Interviewer_Assigned,"-") + "<br><b>Preparation notes:</b> " + ifnull(cand.Interview_Preparation_Notes,"-") + "<br><br>Regards,<br>HR Recruitment Team"
+											]
+										}
+					)
+					}
+				}
+			}
+		}
+
+		approval
+		{
+			Job_Offer_Approval as "Job_Offer_Approval"
+			{
+				type =  approval
+				form = Job_Application_Form[Application_Status == "Ready for Offer"]
+				display fields = [Candidate_Name,Current_Address,Contact_Number,Email_Address,LinkedIn_Profile,Department_Applied_For,Employment_Type_Preferred]
+				on start
+				{
+				}
+				on level 1
+				{
+					on approve 
+					{
+		    			display name = "Approve (Hiring Manager)"
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been approved."
+							)
+						}
+					}
+					on reject
+					{
+
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been rejected."
+							)
+						}
+					}
+				}
+				on level 2
+				{
+					on approve 
+					{
+		    			display name = "Approve (HR Head)"
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been approved."
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							// Both Hiring Manager and HR Head have approved - generate and send the offer letter
+												thisapp.Generate_Offer_Letter_Function(input.ID.toLong());
+						)
+						}
+					}
+					on reject
+					{
+
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.loginuserid"
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been rejected."
+							)
+						}
+					}
+				}
+			}
+		}
+
+		blueprint
+		{
+    			Application_Lifecycle_Blu as "Application_Lifecycle_Blueprint"
+    			{
+        			type = Blueprint
+        			form = Job_Application_Form
+        			start
+        			{
+            			start stage = "Applied"
+            			chart data
+            			{
+                			from port : B
+                			to port   : T3
+                			position  : "0 0"
+                			path      : [27.849999999999994,36.84,27.849999999999994,46.84,27.849999999999994,48.42,27.849999999999998,48.42,27.849999999999998,50,27.849999999999998,60]
+            			}
+        			}
+        			stages
+        			{
+           			"Screening"
+           			{
+               			chart data
+               			{
+                   			position : "-47 171.75"
+               			}
+           			}
+           			"Offer"
+           			{
+               			chart data
+               			{
+                   			position : "-47 401.75"
+               			}
+           			}
+           			"Hired"
+           			{
+               			chart data
+               			{
+                   			position : "-47 515.75"
+               			}
+           			}
+           			"Rejected"
+           			{
+               			chart data
+               			{
+                   			position : "281 286.75"
+               			}
+           			}
+           			"Applied"
+           			{
+               			chart data
+               			{
+                   			position : "-17.788550822903776 60"
+               			}
+           			}
+           			"Interview"
+           			{
+               			chart data
+               			{
+                   			position : "-47 286.75"
+               			}
+           			}
+        			}
+        			transitions
+        			{
+    				Make_Offer1 as "Make Offer"
+    				{
+         				type = normal
+         				from stage = "Interview"
+         				to stage = "Offer"
+         				before
+         				{
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Ready for Offer";
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : B2
+             				to port   : T3
+             				path      : [-9.795638359275092,338.3578297952216,-9.795638359275092,348.3578297952216,-9.795638359275092,370.0539148976108,-8.532950336764195,370.0539148976108,-8.532950336764195,391.75,-8.532950336764195,401.75]
+        				}
+  				}
+    				Mark_Hired as "Mark Hired"
+    				{
+         				type = normal
+         				from stage = "Offer"
+         				to stage = "Hired"
+         				before
+         				{
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Hired";
+														input.Probation_Status = "In Progress";
+														if(input.Referral_Employee_Lookup != null)
+														{
+															input.Referral_Bonus_Status = "Pending";
+														}
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : B1
+             				to port   : T3
+             				path      : [-27.844316778921396,453.3578297952216,-27.844316778921396,463.3578297952216,-27.844316778921396,484.5539148976108,-7.902945453951695,484.5539148976108,-7.902945453951695,505.75,-7.902945453951695,515.75]
+        				}
+  				}
+    				Reject_After_Interview as "Reject After Interview"
+    				{
+         				type = normal
+         				from stage = "Interview"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Rejected";
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : R1
+             				to port   : T3
+             				path      : [55.113084922174735,312.5539148976108,65.11308492217474,312.5539148976108,169.05654246108736,312.5539148976108,169.05654246108736,276.75,329.78505045669283,276.75,329.78505045669283,286.75]
+        				}
+  				}
+    				Reject_After_Screening as "Reject After Screening"
+    				{
+         				type = normal
+         				from stage = "Screening"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Rejected";
+														input.Screening_Status = "Not Shortlisted";
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : R1
+             				to port   : B3
+             				path      : [57.30407918487005,197.5539148976108,67.30407918487005,197.5539148976108,170.15203959243502,197.5539148976108,170.15203959243502,348.3578297952216,329.78505045669283,348.3578297952216,329.78505045669283,338.3578297952216]
+        				}
+  				}
+    				Schedule_Interview1 as "Schedule Interview"
+    				{
+         				type = normal
+         				from stage = "Screening"
+         				to stage = "Interview"
+         				before
+         				{
+         				}
+         				during
+         				{
+            				action = update_fields
+            				workflow status = true
+            				visible fields = [Scheduled_Interview_Date,Interview_Round,Interviewer_Assigned,Interview_Mode,Interview_Preparation_Notes]
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Interview";
+														input.Screening_Status = "Shortlisted";
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : B2
+             				to port   : T3
+             				path      : [-9.065306938376654,223.35782979522162,-9.065306938376654,233.35782979522162,-9.065306938376654,255.0539148976108,4.056542461087368,255.0539148976108,4.056542461087368,276.75,4.056542461087368,286.75]
+        				}
+  				}
+    				Start_Screening1 as "Start Screening"
+    				{
+         				type = normal
+         				from stage = "Applied"
+         				to stage = "Screening"
+         				before
+         				{
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															input.Application_Status = "Screening";
+														input.Screening_Status = "Pending";
+								)
+							}
+         				}
+         				chart data
+         				{
+             				from port : B3
+             				to port   : T3
+             				path      : [27.849999999999998,111.60782979522162,27.849999999999998,121.60782979522162,27.849999999999998,141.6789148976108,5.152039592435024,141.6789148976108,5.152039592435024,161.75,5.152039592435024,171.75]
+        				}
+  				}
+        			}
+    			}
+		}
+
+		batchworkflow
+		{
+			Bulk_Rejection_Notificati
+			{
+    			display name = "Bulk_Rejection_Notification_Batch"
+    			type = batchworkflow
+    			form = Job_Application_Form[Application_Status == "Rejected"]
+    			event = "On Schedule"
+    			start = "10-Nov-2026 21:00:00"
+    			frequency = daily
+    			batch size = 100
+    			status = active
+    			on execute 
+    			{
+					actions 
+					{
+						custom deluge script
+						(
+											// Runs for each rejected record in the batch - only candidates rejected in the past 24 hours are notified
+										if(input.Modified_Time >= zoho.currenttime.subHour(24))
+										{
+											candidateName = input.Candidate_Name.first_name + " " + input.Candidate_Name.last_name;
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Email_Address
+												subject :"Update on your application for " + input.Department_Applied_For
+												message :"Dear " + candidateName + ",<br><br>Thank you for the time and effort you invested in applying to the " + input.Department_Applied_For + " department. After careful consideration, we will not be moving forward with your application at this time.<br>We truly appreciate your interest and encourage you to apply for future openings that match your profile.<br><br>Warm regards,<br>HR Recruitment Team"
+											]
+										}
+						)
+					}
+    			}
+			}
+		}
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "REC"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Employees
+			{
+				label placement = left
+			}
+			form Job_Application_Form
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Job_Applications
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Academic_CGPA as "Academic CGPA"
+								Resume_Upload as "Resume Upload"
+								Candidate_Photo as "Candidate Photo"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Previous_Employment_History.Company_Name as "Previous Employment History"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Willing_To_Relocate as "Willing To Relocate"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Interview_Mode as "Interview Mode"
+								Probation_Status as "Probation Status"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Employees
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Department
+								Employee_Email as "Employee Email"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Department
+								Employee_Email as "Employee Email"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Applications_List
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Application_Status as "Application Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Applications_Spreadsheet
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -3
+						datablock1
+						(
+							layout type = -3
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Application_Status_Kanban
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Department_Applied_For as "Department Applied For"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Interview_Schedule_Calendar
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Candidate_Location_Map
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Application_Activity_Timeline
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Candidate_Name as "Candidate Name"
+								Current_Address as "Current Address"
+								Contact_Number as "Contact Number"
+								Email_Address as "Email Address"
+								LinkedIn_Profile as "LinkedIn Profile"
+								Department_Applied_For as "Department Applied For"
+								Employment_Type_Preferred as "Employment Type Preferred"
+								Years_Of_Experience as "Years Of Experience"
+								Key_Skills as "Key Skills"
+								Available_Joining_Date as "Available Joining Date"
+								Preferred_Interview_Time as "Preferred Interview Time"
+								Cover_Letter as "Cover Letter"
+								Background_Verification_Consent as "Background Verification Consent"
+								Referral_Employee_Lookup as "Referral Employee Lookup"
+								Candidate_Photo as "Candidate Photo"
+								Resume_Upload as "Resume Upload"
+								Academic_CGPA as "Academic CGPA"
+								Portfolio_GitHub_URL as "Portfolio GitHub URL"
+								Video_Resume as "Video Resume"
+								Self_Introduction_Audio as "Self Introduction Audio"
+								Willing_To_Relocate as "Willing To Relocate"
+								Current_Annual_CTC as "Current Annual CTC"
+								Expected_Salary_Hike_Percent as "Expected Salary Hike Percent"
+								Expected_Annual_CTC as "Expected Annual CTC"
+								Company_Culture_Display as "Company Culture Display"
+								Candidate_Digital_Signature as "Candidate Digital Signature"
+								Application_Submitted_On as "Application Submitted On"
+								Application_ID as "Application ID"
+								Candidate_Tracking_QR_Code as "Candidate Tracking QR Code"
+								Application_Status as "Application Status"
+								Screening_Status as "Screening Status"
+								Interview_Round as "Interview Round"
+								Interviewer_Assigned as "Interviewer Assigned"
+								Scheduled_Interview_Date as "Scheduled Interview Date"
+								Probation_Status as "Probation Status"
+								Interview_Preparation_Notes as "Interview Preparation Notes"
+								Payout_Transaction_Reference as "Payout Transaction Reference"
+								Referral_Bonus_Status as "Referral Bonus Status"
+								Interview_Mode as "Interview Mode"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Job_Applications
+				{
+					displayname = "Job Applications"
+					icon = "users-2-a-time"
+					form  Job_Application_Form
+					{
+						icon = "design-2-form"
+					}
+					report All_Job_Applications
+					{
+						icon = "tech-desktop"
+					}
+					report All_Applications_List
+					{
+						icon = "design-2-form"
+					}
+					report Applications_Spreadsheet
+					{
+						icon = "design-2-form"
+					}
+					report Application_Status_Kanban
+					{
+						icon = "design-2-form"
+					}
+					report Interview_Schedule_Calendar
+					{
+						icon = "design-2-form"
+					}
+					report Candidate_Location_Map
+					{
+						icon = "design-2-form"
+					}
+					report Application_Activity_Timeline
+					{
+						icon = "design-2-form"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Employees
+				{
+					displayname = "Employees"
+					icon = "users-single-04"
+					form  Employees
+					{
+						icon = "users-single-04"
+					}
+					report All_Employees
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
